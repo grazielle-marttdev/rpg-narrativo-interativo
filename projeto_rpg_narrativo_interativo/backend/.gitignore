@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-backend/GUIA_IMPLEMENTACAO.md
+GUIA_IMPLEMENTACAO.md
