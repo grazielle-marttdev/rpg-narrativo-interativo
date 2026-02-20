@@ -1,0 +1,242 @@
+{
+    "id": "historia_corvalle",
+    "titulo": "Ecos de Corvalle",
+    "descricao": "Sem uma descrição clara ainda.",
+    "cenaInicial": "o_vale_desperta",
+    "capitulo1": {
+        "cenaValeDesperta": {
+            "id": "o_vale_desperta",
+            "texto": [
+                "O dia começa como sempre começa em Corvalle.",
+                "O som vem antes da luz: passos sobre terra batida, madeira rangendo sob o peso do uso diário, uma porta que se abre, outra que se fecha. Quando o sol finalmente se insinua entre as colinas, ele não surpreende ninguém. Apenas ocupa o lugar que lhe cabe.",
+                "Você conhece esse ritmo. Cresceu dentro dele.",
+                "Antes mesmo de pensar no resto do dia, seus pés seguem um caminho familiar entre as casas próximas. Não precisa bater — a porta costuma estar entreaberta nesse horário.",
+                "O cheiro de comida quente chega antes da voz.",
+                "A senhora já está acordada. Sempre está. Ela fala com você como se tivesse certeza da sua chegada: pergunta se dormiu bem, comenta algo trivial sobre o tempo ou sobre alguém que passou cedo demais pela rua.",
+                "Você come ali quando seu irmão está fora. Às vezes ajuda a arrumar algo. Às vezes apenas escuta.",
+                "Não é um acordo formal. Nunca foi.",
+                "Ao sair, o ar da manhã mistura cheiro de pão recém-assado com o do rio próximo. Alguém passa carregando ferramentas. Outra pessoa acena com a cabeça, sem pressa, como se o tempo fosse largo demais para palavras longas.",
+                "Corvalle desperta sem alarde — e isso sempre lhe pareceu certo."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "vozes_do_cotidiano"
+        },
+        "cenaVozesDoCotidiano": {
+            "id": "vozes_do_cotidiano",
+            "texto": [
+                "Ao circular pela aldeia, você recolhe fragmentos de conversa. Nenhum parece importante por si só.",
+                "— O vale anda silencioso demais à noite — comenta alguém perto da estalagem, mais como observação do que como preocupação.",
+                "— Silencioso nada — responde outro, rindo. — É só o frio chegando mais cedo.",
+                "Perto da praça, uma criança puxa a manga de um adulto.",
+                "— Eu vi uma luz ontem. Lá perto da floresta.",
+                "O adulto sorri, distraído.",
+                "— Luz é vaga-lume. Ou imaginação. Vai brincar.",
+                "A criança insiste por um segundo a mais… depois corre, convencida ou cansada demais para continuar.",
+                "As palavras se perdem no ar, misturadas ao som de passos, risadas e martelos. Nada ali exige atenção. Ainda assim, você guarda algumas frases. Não porque fazem sentido — mas porque insistem."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "a_tarefa"
+        },
+        "cenaATarefa": {
+            "id": "a_tarefa",
+            "texto": [
+                "Perto do meio da manhã, quando o movimento da aldeia se espalha pelas ruelas, uma voz o chama.",
+                "O velho Edrin está sentado à margem do rio, apoiado em um bastão de madeira lisa. Não parece fraco — apenas cansado de um jeito antigo, como se o corpo soubesse exatamente o peso dos anos que carrega.",
+                "Ele ergue o olhar quando você se aproxima.",
+                "— Você anda bastante por aí, criança — diz, mais como constatação do que como elogio.",
+                "Depois de um breve silêncio, continua:",
+                "— Preciso de um favor simples… se não for incômodo.",
+                "Edrin explica sem rodeios. Ele costumava marcar uma trilha antiga, mais próxima da floresta, com pequenas pedras colocadas de um jeito específico. Não para indicar destino. Apenas para não perder o caminho.",
+                "Depois da última chuva, algumas devem ter rolado.",
+                "— Não é longe — diz. — Mas minhas pernas já não gostam daquele trecho.",
+                "Ele hesita antes de completar:",
+                "— Você poderia dar uma olhada. Ver se ainda estão lá."
+            ],
+            "escolhas": {
+                "ajudarEdrin": {
+                    "id": "ajudar_edrin",
+                    "texto": [
+                        "Você aceita.",
+                        "Edrin apenas assente, satisfeito, como se já esperasse isso. Ele indica o caminho com o bastão, descrevendo detalhes que você já conhece — e alguns que não lembrava mais.",
+                        "A trilha fica para além das ruelas mais cheias, passando pela margem do rio e seguindo por um trecho antigo, pouco usado. Durante o dia, o lugar parece comum demais para justificar qualquer história.",
+                        "Você encontra algumas pedras fora do lugar. Recoloca duas delas. Deixa outra onde caiu, achando que ainda serve.",
+                        "Nada acontece.",
+                        "Mesmo assim, ao retornar, há uma sensação estranha de reconhecimento, como se o caminho tivesse se gravado um pouco mais fundo na memória.",
+                        "Quando você se despede, Edrin observa em silêncio por um segundo a mais do que o necessário.",
+                        "— Obrigado — diz, por fim. — Nem todo mundo repara nessas coisas."
+                    ],
+                    "efeitos": {
+                        "empatia": 7
+                    },
+                    "flags": {
+                        "ajudouEdrin": true
+                    },
+                    "proximaCenaId": "a_fogueira"
+                },
+                "dizerNaoParaEdrin": {
+                    "id": "dizer_nao_para_edrin",
+                    "texto": [
+                        "Você explica que tem outras coisas para fazer.",
+                        "Edrin não insiste. Ele apenas balança a cabeça, compreensivo.",
+                        "— Claro. Não é urgente — responde.",
+                        "— Essas trilhas já ficaram esquecidas antes.",
+                        "Quando você se afasta, percebe que ele permanece olhando para o rio por um tempo longo demais, como se calculasse algo que não pretende dizer em voz alta.",
+                        "Mais tarde, você se pergunta se teria sido realmente tão difícil ajudar."
+                    ],
+                    "efeitos": {
+                        "empatia": -2
+                    },
+                    "proximaCenaId": "a_fogueira"
+                }
+            }
+        },
+        "fogueiraResolver": {
+            "id": "a_fogueira",
+            "texto": [
+                "Quando o céu escurece, a fogueira é acesa na área comum.",
+                "As chamas crescem devagar, e com elas o som das vozes. Um instrumento aparece. Alguém começa uma história antiga, contada tantas vezes que já não pertence a quem fala — muda um pouco a cada repetição.",
+                "Você se senta entre conhecidos.",
+                "O calor alcança o rosto, as mãos, o peito. Crianças correm em círculos. Adultos conversam sem pressa. Há risadas, pausas confortáveis, silêncios que não incomodam.",
+                "Nada exige que você vá embora.",
+                "Edrin está ali também. Não chama atenção. Nunca chamou.",
+                "Mas se você olha na direção dele, algo muda — não no gesto, mas na presença."
+            ]
+        },
+        "cenaAFogueiraAjudouEdrin": {
+            "id": "ajudou_edrin",
+            "texto": [
+                "Ele o cumprimenta com um leve aceno.",
+                "Em certo momento, quando alguém comenta sobre trilhas antigas, Edrin parece prestar mais atenção do que antes."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "primeiro_eco"
+        },
+        "cenaAFogueiraRecusouEdrin": {
+            "id": "recusou_ajudar_edrin",
+            "texto": [
+                "Ele permanece fechado. Não está irritado — apenas distante, como quem guarda pensamentos que decidiu não compartilhar."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "primeiro_eco"
+        },
+        "primeiroEcoDesfechoResolver": {
+            "id": "primeiro_eco_desfecho_resolver",
+            "texto": [
+                "É então que você percebe.",
+                "Não de imediato. Não como um chamado.",
+                "É algo fora do centro da visão. Um contraste pálido demais para interromper a cena, mas insistente o suficiente para não ser ignorado.",
+                "Perto da borda da clareira — mais próximo da floresta do que da fogueira — o ar parece deslocado.",
+                "Não é exatamente luz. Nem exatamente sombra.",
+                "Ninguém mais reage.",
+                "Só você.",
+                "Por um instante, você pensa que pode ser cansaço. Ou fogo refletido de um jeito estranho.",
+                "Mas aquilo se move. Não rápido. Não chamativo. Apenas o suficiente para sugerir direção."
+            ],
+            "escolhas": {
+                "permanecerJuntoAFogueira": {
+                    "id": "permancer_junto_a_fogueira",
+                    "texto": [
+                        "Você decide ficar.",
+                        "As chamas continuam crepitando. A história chega ao fim e outra começa logo depois, contada por alguém que gesticula demais e muda detalhes importantes sem perceber. Alguém ri alto. Outra pessoa pede mais bebida.",
+                        "Em algum momento, sem alarde, o burburinho muda.",
+                        "Um rosto novo — ou melhor, um rosto conhecido depois de algum tempo — surge na borda da roda de luz. Algumas pessoas acenam com a cabeça. Outras sorriem, surpresas.",
+                        "Seu irmão voltou.",
+                        "Ele parece cansado, marcado de estrada, mas inteiro. Alguém lhe dá um tapinha no ombro. Outro comenta algo trivial sobre o clima. Ele responde pouco, como quem ainda está se reajustando ao ritmo da aldeia.",
+                        "Quando você o vê, levanta num pulo e corre até ele sem pensar.",
+                        "Ele ri, surpreso, e se abaixa um pouco para falar com você no meio do barulho.",
+                        "— Cheguei agora há pouco, diz. Depois a gente conversa direito.",
+                        "Não há espaço para mais. Pessoas demais. Ouvidos demais.",
+                        "Ele permanece ali, perto da fogueira, presente — mas ainda distante de qualquer explicação.",
+                        "A noite segue tranquila. Ainda assim, quando você se lembra do que achou ter visto antes, a dúvida permanece.",
+                        "Pequena. Persistente.",
+                        "(A curiosidade cresce, silenciosa.)"
+                    ],
+                    "efeitos": {
+                        "curiosidade": 1
+                    }
+                },
+                "seguirOQueViu": {
+                    "id": "seguir_o_que_viu",
+                    "texto": [
+                        "Você se levanta devagar.",
+                        "Ninguém percebe sua ausência.",
+                        "À medida que se afasta, o som da fogueira diminui. As vozes se misturam até virarem apenas um murmúrio distante. A luz quente fica para trás.",
+                        "A sombra — ou luz — está à frente agora. Não se afasta muito. Não se aproxima. Apenas mantém distância suficiente para ser seguida.",
+                        "Você caminha.",
+                        "A floresta começa onde a clareira termina. O ar muda. Em algum ponto, sem aviso, você percebe que caminha sozinho.",
+                        "A presença que guiava seus passos não está mais ali.",
+                        "Não há susto. Não há ameaça.",
+                        "Só então você nota algo diferente no chão, perto de uma pedra maior, meio coberta por folhas.",
+                        "No escuro, é difícil dizer o que é. Um risco. Um encaixe. Uma marca antiga demais para ser recente.",
+                        "Você se abaixa um pouco, tenta ver melhor."
+                    ],
+                    "efeitos": {
+                        "curiosidade": 2,
+                        "coragem": 2
+                    },
+                    "proximaCenaId": "encerramento"
+                }
+            }
+        },
+        "primeiroEcoDesfechoAjudou": {
+            "id": "primeiro_eco_desfecho_ajudou",
+            "texto": [
+                "A forma lhe parece familiar.",
+                "Não idêntica, mas próxima demais para ser coincidência. Lembra das pedras da trilha antiga. Do jeito como algumas eram colocadas não para marcar, mas para indicar continuidade.",
+                "Um caminho que não se impõe. Apenas se deixa seguir.",
+                "Você se levanta quando ouve passos atrás de você.",
+                "— Ei.",
+                "Uma mão toca seu ombro.",
+                "Você se vira rápido.",
+                "É seu irmão.",
+                "Ele parece cansado, mas inteiro. Há poeira nas roupas, marcas de estrada nos sapatos. Um sorriso breve surge, como se ele também estivesse avaliando o momento.",
+                "Ele parece tão surpreso quanto você por se encontrarem ali, longe da fogueira.",
+                "— Achei que você estivesse lá com o pessoal — diz, —  apontando vagamente para trás.",
+                "Você olha de novo para a pedra. Depois para ele.",
+                "Não diz nada.",
+                "Seu irmão observa sua hesitação por um segundo a mais do que o normal, como se tivesse percebido algo que você ainda não sabe explicar.",
+                "— Vamos voltar —  diz, por fim. —  Tá ficando tarde.",
+                "Você concorda.",
+                "Enquanto caminham de volta para a luz da fogueira, você não olha para trás.",
+                "Mas sabe exatamente onde a pedra está."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "encerramento"
+        },
+        "primeiroEcoDesfechoRecusou": {
+            "id": "primeiro_eco_desfecho_recusou",
+            "texto": [
+                "Você não reconhece o padrão, mas sente que há intenção ali. Aquilo não está daquele jeito por acaso.",
+                "É uma curiosidade incômoda, daquelas que não se resolvem olhando rápido demais.",
+                "Você se levanta quando ouve passos atrás de você.",
+                "— Ei.",
+                "Uma mão toca seu ombro.",
+                "Você se vira rápido.",
+                "É seu irmão.",
+                "Ele parece cansado, mas inteiro. Há poeira nas roupas, marcas de estrada nos sapatos. Um sorriso breve surge, como se ele também estivesse avaliando o momento.",
+                "Ele parece tão surpreso quanto você por se encontrarem ali, longe da fogueira.",
+                "— Achei que você estivesse lá com o pessoal — diz, —  apontando vagamente para trás.",
+                "Você olha de novo para a pedra. Depois para ele.",
+                "Não diz nada.",
+                "Seu irmão observa sua hesitação por um segundo a mais do que o normal, como se tivesse percebido algo que você ainda não sabe explicar.",
+                "— Vamos voltar —  diz, por fim. —  Tá ficando tarde.",
+                "Você concorda.",
+                "Enquanto caminham de volta para a luz da fogueira, você não olha para trás.",
+                "Mas sabe exatamente onde a pedra está."
+            ],
+            "efeitos": {},
+            "proximaCenaId": "encerramento"
+        },
+        "cenaEncerramento": {
+            "id": "encerramento",
+            "texto": [
+                "Quando a noite termina, Corvalle retorna ao silêncio habitual.",
+                "Ao amanhecer, tudo parece igual: casas, rio, colinas.",
+                "Ainda assim, algo mudou.",
+                "Não no vale.",
+                "Em você, que começa a suspeitar que há caminhos ali que sempre estiveram presentes — e que só agora começaram a se deixar notar."
+            ],
+            "efeitos": {}
+        }
+    }
+}
