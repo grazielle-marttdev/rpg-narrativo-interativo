@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { iniciarJogo } from '../../../aplicacao/iniciarJogo';
 import { realizarEscolha } from '../../../aplicacao/realizarEscolha';
+import { buscarCenaPorId } from '../../banco/repositorios/repositorioJogo';
 
 export function iniciarNovoJogo(req: Request, res: Response) {
     try {
@@ -17,19 +18,25 @@ export function iniciarNovoJogo(req: Request, res: Response) {
 export function escolherOpcao(req: Request, res: Response) {
     try {
         // O Frontend vai enviar o estado atual e a escolha feita no corpo (body) da requisição
-        const { estado, cena, escolha } = req.body;
+        const { estado, cenaId, escolhaId } = req.body;
 
-        // Validar se os dados chegaram
-        if (!estado || !cena || !escolha) {
-            return res.status(400).json({ mensagem: "Dados incompletos para realizar escolha" });
+        // 1. Buscar a cena real do "livro" (JSON)
+        const cenaReal = buscarCenaPorId(cenaId);
+
+        if (!cenaReal) {
+            return res.status(404).json({ mensagem: "Cena não encontrada!" });
         }
 
-        // Chamar a lógica criada na pasta aplicação
-        const novoEstado = realizarEscolha(estado, cena, escolha);
+        // 2. Encontrar a escolha específica dentro da cena
+        const escolhaReal = cenaReal.escolhas[escolhaId];
 
-        // Retornar o novo estado para o jogador
-        res.status(200).json(novoEstado);
-    } catch (erro) {
+        // 3. Processar a lógica
+        const novoEstado = realizarEscolha(estado, cenaReal, escolhaReal);
+
+        res.json(novoEstado);
+    } catch (erro: any) {
+        console.error("ERRO NO CONTROLADOR:", erro.message);
+        
         res.status(500).json({ mensagem: "Erro ao processar escolha" });
     }
 }
