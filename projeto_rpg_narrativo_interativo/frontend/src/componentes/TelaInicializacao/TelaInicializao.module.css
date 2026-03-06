@@ -1,0 +1,340 @@
+.root {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: hsl(var(--background));
+}
+
+.bgAtmosferaA {
+    position: absolute;
+    inset: -12%;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 35%, hsl(var(--accent-color) / 0.24) 0%, transparent 56%),
+        radial-gradient(circle at 50% 50%, hsl(0 0% 100% / 0.03) 0%, transparent 65%);
+    opacity: 0.42;
+    transform: translate3d(0, 0, 0) scale(1);
+    will-change: transform, opacity;
+}
+
+.bgAtmosferaB {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(130deg, hsl(0 0% 100% / 0.03), transparent 45%, hsl(0 0% 100% / 0.02));
+    opacity: 0.3;
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    max-width: 42rem;
+    padding: 1.5rem;
+}
+
+.escudoPortal {
+    width: 100%;
+    max-width: 42rem;
+    border-radius: 1.5rem;
+    border: 1px solid hsl(0 0% 100% / 0.01);
+    padding: 3rem 2rem;
+    background: linear-gradient(170deg, hsl(var(--card) / 0.66), hsl(var(--background) / 0.5));
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.09), var(--shadow-cinematic);
+}
+
+.carregandoPainel {
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.circuloGiratorio {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.exteriorGiratorio {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    border: 1px solid hsl(0 0% 100% / 0.15);
+    padding: 0.5rem;
+}
+
+.interiorGiratorio {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid hsl(var(--primary) / 0.25);
+    border-top-color: hsl(var(--primary));
+    animation: spin 1s linear infinite;
+}
+
+.trilhaProgresso {
+    margin-bottom: 1.25rem;
+    height: 3px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: hsl(0 0% 100% / 0.1);
+}
+
+.preenchimentoProgresso {
+    height: 100%;
+    background: hsl(var(--primary) / 0.85);
+    transition: width 300ms;
+}
+
+.linhaStatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem;
+    text-align: left;
+}
+
+.statusTexto,
+.statusProgresso,
+.portalLabel,
+.textoSistema {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+}
+
+.statusTexto {
+    letter-spacing: 0.22em;
+    color: hsl(var(--foreground));
+}
+
+.statusProgresso {
+    letter-spacing: 0.1em;
+    color: hsl(var(--foreground) / 0.5);
+}
+
+.tituloPainel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.envoltorioPortalLabel {
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.portalLabel {
+    letter-spacing: 0.65em;
+    color: hsl(var(--foreground) / 0.55);
+    animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.titulo {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-narrative);
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: hsl(var(--foreground));
+    animation: cinematografico 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.subtitulo {
+    max-width: 28rem;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    letter-spacing: 0.04em;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 2rem;
+}
+
+.divisor {
+    margin-bottom: 2rem;
+    height: 1px;
+    width: 7rem;
+    background: hsl(0 0% 100% / 0.15);
+}
+
+.revelacaoDivisor {
+    animation: cinematografico 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+.ctaBotao {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    color: hsl(var(--primary-foreground));
+    background: linear-gradient(180deg, hsl(var(--accent-color) / 0.95), hsl(var(--accent-color) / 0.72));
+    box-shadow: 0 14px 30px -18px hsl(var(--accent-color) / 0.72);
+    transition: transform 300ms, box-shadow 300ms;
+    cursor: pointer;
+}
+
+.ctaBotao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: hsl(0 0% 100% / 0.1);
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+.ctaBotao:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-glow);
+}
+
+.ctaBotao:hover::after {
+    opacity: 1;
+}
+
+.ctaBotao:active {
+    transform: translateY(2px) scale(0.995);
+    box-shadow: 0 8px 16px -14px hsl(var(--accent-color) / 0.62);
+}
+
+.revelacaoCta {
+    animation: cinematografico 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+.ctaLabel {
+    position: relative;
+    font-size: 0.75rem;
+    text-decoration: none;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: hsl(var(--foreground));
+}
+
+.infoSistema {
+    position: absolute;
+    right: 0;
+    bottom: 3rem;
+    left: 0;
+    z-index: 20;
+    text-align: center;
+    color: hsl(var(--muted-foreground));
+    opacity: 0.2;
+}
+
+.textoSistema {
+    letter-spacing: 0.7em;
+}
+
+@media (min-width: 768px) {
+    .escudoPortal {
+        padding: 3.5rem;
+    }
+
+    .titulo {
+        font-size: 4.8rem;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ctaBotao {
+        padding: 1rem 1.5rem;
+    }
+
+    .ctaLabel {
+        font-size: 0.6875rem;
+    }
+}
+
+@media (max-width: 426px) {
+    .escudoPortal {
+        padding: 2.5rem 1rem;
+    }
+}
+
+@media (max-width: 385px) {
+    .ctaBotao {
+        padding: 0.8rem 1rem;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+}
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes cinematografico {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes pulsoSuave {
+
+    0%,
+    100% {
+        opacity: 0.22;
+    }
+
+    50% {
+        opacity: 0.42;
+    }
+}
