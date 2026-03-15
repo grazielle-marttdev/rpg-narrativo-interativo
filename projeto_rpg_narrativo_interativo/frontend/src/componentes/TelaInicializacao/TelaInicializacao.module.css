@@ -10,29 +10,6 @@
     background-color: hsl(var(--background));
 }
 
-.bgAtmosferaA {
-    position: absolute;
-    inset: -12%;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 50% 35%, hsl(var(--accent-color) / 0.24) 0%, transparent 56%),
-        radial-gradient(circle at 50% 50%, hsl(0 0% 100% / 0.03) 0%, transparent 65%);
-    opacity: 0.42;
-    transform: translate3d(0, 0, 0) scale(1);
-    will-change: transform, opacity;
-}
-
-.bgAtmosferaB {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(130deg, hsl(0 0% 100% / 0.03), transparent 45%, hsl(0 0% 100% / 0.02));
-    opacity: 0.3;
-    transform: translate3d(0, 0, 0);
-    will-change: transform, opacity;
-}
-
 .content {
     position: relative;
     width: 100%;
