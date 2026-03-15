@@ -1,12 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styles from './TelaInicializao.module.css';
+import styles from './TelaInicializacao.module.css';
 import { ParticulasFlutuantes } from "../ParticulasFlutuantes";
 
-interface TelaInicializacaoProps {
-    onIniciar: () => void;
-}
-
-export const TelaInicializacao = ({ onIniciar }: TelaInicializacaoProps) => {
+export const TelaInicializacao = () => {
+    const navigate = useNavigate();
     const [fase, setFase] = useState<'carregando' | 'titulo' | 'preparar'>('carregando');
     const [progresso, setProgresso] = useState(0);
     const [statusTexto, setStatusTexto] = useState('Ajustando o núcleo de ecos...');
@@ -55,11 +53,15 @@ export const TelaInicializacao = ({ onIniciar }: TelaInicializacaoProps) => {
         }
     }, [fase]);
 
+    function iniciarSistema() {
+        navigate("/menu");
+    }
+
     return (
         <div className={styles.root}>
             {/* Background Atmosfera */}
-            <div className={styles.bgAtmosferaA}></div>
-            <div className={styles.bgAtmosferaB}></div>
+            <div className="bgAtmosferaA"></div>
+            <div className="bgAtmosferaB"></div>
 
             <ParticulasFlutuantes />
 
@@ -74,7 +76,7 @@ export const TelaInicializacao = ({ onIniciar }: TelaInicializacaoProps) => {
                         </div>
 
                         <div className={styles.trilhaProgresso}>
-                            <div className={styles.preenchimentoProgresso} style={{ width: `${progresso}%`}} />
+                            <div className={styles.preenchimentoProgresso} style={{ width: `${progresso}%` }} />
                         </div>
 
                         <div className={styles.linhaStatus}>
@@ -99,7 +101,7 @@ export const TelaInicializacao = ({ onIniciar }: TelaInicializacaoProps) => {
                         <div className={`${styles.divisor} ${styles.revelacaoDivisor}`} />
 
                         {fase === 'preparar' && (
-                            <button type="button" onClick={onIniciar} className={`${styles.ctaBotao} ${styles.revelacaoCta}`}>
+                            <button type="button" onClick={iniciarSistema} className={`${styles.ctaBotao} ${styles.revelacaoCta}`}>
                                 <span className={styles.ctaLabel}>Acessar Núcleo</span>
                             </button>
                         )}
@@ -115,4 +117,3 @@ export const TelaInicializacao = ({ onIniciar }: TelaInicializacaoProps) => {
 
     )
 }
-

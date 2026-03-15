@@ -1,13 +1,16 @@
-import { TelaInicializacao } from "./componentes/TelaInicializacao"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TelaInicializacao } from "./componentes/TelaInicializacao";
+import { MenuLoginRegistro } from "./paginas/Menu"
 
 function App() {
 
   return (
-    <>
-      <TelaInicializacao onIniciar={function (): void {
-        throw new Error("Function not implemented.")
-      } }></TelaInicializacao>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TelaInicializacao />} />
+        <Route path="/menu" element={<MenuLoginRegistro />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
