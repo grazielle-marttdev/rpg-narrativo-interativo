@@ -1,0 +1,252 @@
+.root {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+    width: 100svw;
+    padding: 1rem;
+    background-color: hsl(var(--background));
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-color: hsl(var(--sidebar-accent)) hsl(var(--sidebar-background));
+    scrollbar-width: thin;
+}
+
+.botaoVoltar {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.625rem;
+    background: rgb(255 255 255 / 0.03);
+    color: hsl(var(--foreground) / 0.5);
+    border: 1px solid hsl(var(--border));
+    border-radius: 9999px;
+    transition: background 300ms ease;
+    cursor: pointer;
+}
+
+.botaoVoltar:hover {
+    background: rgb(255 255 255 / 0.06);
+}
+
+.form {
+    background: linear-gradient(155deg, hsl(var(--card) / 0.68), hsl(var(--background) / 0.5));;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 460px;
+    height: 100%;
+    max-height: 590px;
+    padding: 2rem;
+    border: 2px solid hsl(var(--border));
+    border-radius: 1rem;
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.08), var(--shadow-cinematic);
+}
+
+.logoContainer {
+    color: hsl(var(--primary));
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer svg {
+    height: 30px;
+    width: auto;
+}
+
+.titulo {
+    font-family: var(--font-narrative);
+    font-size: 2.25rem;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground) / 0.6);
+    letter-spacing: 0.22em;
+    margin-bottom: 2.5rem;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: hsl(var(--primary) / 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.iconeLabel {
+    font-size: 0.625rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input {
+    font-size: 1rem;
+    background-color: rgb(255 255 255 / 0.03);
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem;
+    color: hsl(var(--foreground));
+    outline: none; 
+}
+
+.input::placeholder {
+    color: hsl(var(--foreground) / 0.6);
+}
+
+.input:focus {
+    outline: 1px solid hsl(var(--primary));
+}
+
+.botao {
+    position: relative;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2.25rem;
+    border: none;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, hsl(var(--accent-color) / 0.95), hsl(var(--accent-color) / 0.72));
+    box-shadow: 0 14px 30px -18px hsl(var(--accent-color) / 0.72);
+    transition: transform 300ms, box-shadow 300ms;
+    cursor: pointer;
+}
+
+.btnLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+}
+
+.botao:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px -18px hsl(var(--accent-color) / 0.70);
+}
+
+.botao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+.botao:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-glow);
+}
+
+.botao:hover::after {
+    opacity: 1;
+}
+
+.botao:active {
+    transform: translateY(2px) scale(0.995);
+    box-shadow: 0 8px 16px -14px hsl(var(--accent-color) / 0.62);
+}
+
+.divisor {
+    background-color: hsl(var(--border) / 0.35);
+    height: 1px;
+    width: 100%;
+    margin-bottom: 1.75rem;
+}
+
+.textoRodape {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: hsl(var(--muted-foreground) / 0.5);
+    letter-spacing: 0.2em;
+}
+
+
+@media (max-width: 640px) {
+    .root {
+        padding: 5rem 1rem 0;
+    }
+
+    .logoContainer svg {
+        height: 25px;
+        width: auto;
+    }
+}
+
+@media (max-width: 460px) {
+    .root {
+        padding: 3rem 1rem 0;
+    }
+
+    .form {
+        height: 85%;
+        padding: 1.5rem;
+    }
+
+    .logoContainer {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .logoContainer svg {
+        height: 20px;
+        width: auto;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .subtitulo {
+        font-size: 0.625rem;
+    }
+
+    .inputContainer {
+        font-size: 0.5625rem;
+    }
+
+    .input {
+        font-size: 0.875rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .botao {
+        padding: 0.8rem;
+    }
+
+    .btnLabel {
+        font-size: 0.75rem;
+    }
+
+    .textoRodape {
+        font-size:  0.5625rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .form {
+        padding: 1rem;
+    }
+}
