@@ -149,9 +149,9 @@
         width: 100%;
     }
     
-    .botaoLogin, .botaoRegistro {
+    .botao {
         padding: 1rem 1.5rem;
-        max-width: unset;
+        max-width: 100%;
     }
 }
 
