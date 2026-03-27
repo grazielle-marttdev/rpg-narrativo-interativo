@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ParticulasFlutuantes } from '../../componentes/ParticulasFlutuantes';
-import styles from '../TelasLoginRegistro.module.css';
+import styles from './TelasLoginRegistro.module.css';
 import type React from 'react';
 
 export const TelaLogin = () => {
