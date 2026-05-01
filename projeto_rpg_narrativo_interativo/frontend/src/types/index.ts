@@ -23,7 +23,7 @@ interface PlayerState {
 }
 
 // characters.json -- NPCs
-
+/*
 interface NPCProfile {
     id: string;
     displayName: string;         // nome exibido no chat
@@ -34,7 +34,7 @@ interface NPCProfile {
     relationshipScore: number;   // 0-100 -- afeta tom de algumas cenas (pós-MVP)
     post: NPCpost[];             // postagens no perfil
 }
-
+*/
 interface NPCpost {
     id: string;
     text: string;
@@ -100,4 +100,17 @@ interface NewsItem {
     body: string;
     publishedAfterFlag?: string;    // aparece apenas após esta flag
     containsClue: boolean;          // sinaliza ao dev que este item tem pista narrativa
+}
+
+export type {
+    PlayerProfile,
+    TimerEntry,
+    PlayerState,
+    NPCpost,
+    Choice,
+    ChatEvent,
+    EventCondition,
+    NarrativeEvent,
+    WorldState,
+    NewsItem
 }
