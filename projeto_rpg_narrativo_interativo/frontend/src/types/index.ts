@@ -1,116 +1,64 @@
-// player.json -- estado do jogador
+// ============================================================
+// Contrato de dados de toda a aplicação.
+// Todos os módulos importam daqui.
+// ============================================================
+
+
+// PLAYER - player.ts
 
 interface PlayerProfile {
-    name: string;                                // nome escolhido pelo jogador
-    pronoun: 'ele' | 'ela' | 'elu';              // pronome selecionado 
-    pronounPossessive: 'seu' | 'sua' | 'seu';    // possessivo correspondente
-}
-
-interface TimerEntry {
-    eventId: string;       // ID do evento que será desbloqueado
-    endTime: number;       // Date.now() + duração em ms (salvo ao iniciar o timer)
-    skippable: boolean;    // se o jogador pode pular o timer
+    name: string;                        // nome escolhido pelo jogador
+    pronoun: 'ele' | 'ela';              // pronome selecionado 
+    pronounPossessive: 'seu' | 'sua';    // possessivo correspondente
 }
 
 interface PlayerState {
     profile: PlayerProfile;          // informações do perfil do jogador
-    currentScene: string;            // ID da cena atual
+    currentSceneId: string;          // ID da cena atual
     flags: Record<string, boolean>;  // todas as flags booleanas
-    unlockedChats: string[];         // IDs das DMs desbloqueados
-    readMessages: string[];          // IDs das mensagens já lidas
-    activeTimers: TimerEntry[];      // timers ativos no momento
-    lastSaved: number;               // Date.now() do último save
+    lastSaved: number;               // Timestamp do último save
 }
 
-// characters.json -- NPCs
-/*
-interface NPCProfile {
+// CHARACTERS - characters.ts
+
+interface Character {
     id: string;
-    displayName: string;         // nome exibido no chat
-    username: string;            // @username 
-    avatarUrl: string;           // caminho para a imagem de perfil
-    bio: string;                 // bio do perfil (pode mudar ao longo do jogo)
-    isUnlocked: boolean;         // se o chat já está disponível para o jogador
-    relationshipScore: number;   // 0-100 -- afeta tom de algumas cenas (pós-MVP)
-    post: NPCpost[];             // postagens no perfil
-}
-*/
-interface NPCpost {
-    id: string;
-    text: string;
-    timestamp: string;            // string de data fictícia
-    unlockedAfterFlag?: string;   // post só aparece após esta flag ser true
+    displayName: string;         
+    nomeColor?: string;     // Cor em HEX. Ex: "#123456". Se não tiver, usa cor padrão
 }
 
-// messages.json -- Diálogos
+
+// STORY - story.ts
 
 interface Choice {
     text: string;                             // texto da opção exibida ao jogador 
-    nextId: string;                           // ID do próximo ChatEnvent a ser carregado
+    nextId: string;                           // Para qual cena vai ao clicar
     setFlag?: Record<string, boolean>;        // flags setadas ao escolher esta opção
     requiresFlags?: Record<string, boolean>;  // esta opção só aparece se estas flags forem true
 }
 
-interface ChatEvent {
-    id: string;                      
-    sender: 'npc' | 'player' | 'system';    // quem envia
-    npcId?: string;                         // ID do NPC em characters.json (se sender = 'npc')
-    text: string;                           // texto da mensagem (pode conter tokens)
-    delaysMs: number;                       // delay antes de esta mensagem aparecer (ms)
-    typingDurationMs: number;               // duração do indicador "digitando..." antes do texto
-    choices?: Choice[];                     // opções de resposta (se houver)
-    triggersEventId?: string;               // dispara um evento em events.json após esta mensagem
-    isFlash?: boolean;                      // se true, renderiza como tela em vez de chat
-}
-
-// events.json -- Motor de Narrativa
-
-interface EventCondition {
-    requires?: Record<string, boolean>;  // todas estas flags devem ser true
-    // pós-MVP: adicionar 'requiredAny', 'requiresNone' para OR e NOT
-}
-
-interface NarrativeEvent {
-    id: string;                      
-    condition: EventCondition;              // condições de desbloqueio
-    triggersScene: string;                  // ID do primeiro ChatEvent a carregar
-    setFlags?: Record<string, boolean>;     // flags setadas automaticamente ao disparar
-    startsTimer?: {
-        durationMs: number;
-        skippable: boolean;
-        nextEventId: string;                // evento desbloqueado quando o timer expira  
-    };
-}
-
-// world.json -- Estado do Mundo
-
-interface WorldState {
-    currentAct: 1 | 2 | 3 | 4;
-    unlockedFeatures: {
-        feed: boolean;             // canal de notícias (pós-MVP)
-        terminal: boolean;         // interface de terminal (Ato 3)
-        nexusSearch: boolean;      // busca de usuários no Nexus
-    };
-    newsItems: NewsItem[];         // itens do canal de notícias (quando desbloqueado)
-}
-
-interface NewsItem {
+interface Scene {
     id: string;
-    headline: string;
-    body: string;
-    publishedAfterFlag?: string;    // aparece apenas após esta flag
-    containsClue: boolean;          // sinaliza ao dev que este item tem pista narrativa
+
+    // Narrativa
+    text: string;            // O texto vai aparecer com efeito typewriter
+    speakerId: string;       // O ID do Character falando. Se vazio, é o Narrador.
+
+    // Mídia (Opcional, só preenche quando for trocar de cena)
+    background?: string;     // URL da imagem ou classe CSS/gradiente
+    bgm?: string;            // Música de fundo (background music)
+    sfx?: string;            // Efeito sonoro pontual 
+
+    // Navegação
+    choices?: Choice[];      // Se houver opções
+    nextSceneId?: string;    // Se NÃO houver opções, clica pra ir direto pra próxima cena.
 }
+
 
 export type {
     PlayerProfile,
-    TimerEntry,
     PlayerState,
-    NPCpost,
+    Character,
     Choice,
-    ChatEvent,
-    EventCondition,
-    NarrativeEvent,
-    WorldState,
-    NewsItem
+    Scene
 }
